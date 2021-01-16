@@ -1,0 +1,10 @@
+<div id="directory" class="halfpage">
+	<h1 class="header"><a href="/">sav's notebook</a></h1>
+	<h2 class="subheader">site directory</h2>
+
+	<ul>
+		{{ range .Site.Taxonomies.tags }}
+    		<li class="card"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
+		{{ end }}
+	</ul>
+</div>

@@ -1,0 +1,6 @@
+baseURL = "saviour.dev"
+languageCode = "en-us"
+title = "sav's notebook"
+
+[taxonomies]
+  tag = "tags"

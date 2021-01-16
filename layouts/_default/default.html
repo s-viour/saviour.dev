@@ -1,0 +1,19 @@
+<html>
+<head>
+	{{ partial "head.html" . }}
+</head>
+<body>
+	<div class="container">
+		{{ partial "directory.html" . }}
+
+
+		<div id="content" class="halfpage">
+			<div class="databox">
+				<h1>ENTRY #{{ .Params.index }}</h1>
+				<h2>{{ .Title }}</h2>
+				{{ .Content }}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
