@@ -108,11 +108,7 @@
 
 @media screen and (min-width: 768px) {
 	.databox {
-		width: 90%;
-		height: 640px;
-		margin-top: 10%;
-		margin-bottom: 10%;
-
 		overflow-y: scroll;
+		height: 90vh;
 	}
 }
