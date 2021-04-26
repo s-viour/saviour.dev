@@ -82,7 +82,7 @@
 
 	color: #111;
 	font-size: 1.1em;
-	font-family: cutive;
+	font-family: spectral;
 }
 
 .databox a {
@@ -91,6 +91,7 @@
 
 .databox h1, h2 {
 	margin: 0.2em;
+	font-family: cutive
 }
 
 .databox ul {
@@ -99,6 +100,10 @@
 
 .databox li a {
 	font-weight: bold;
+}
+
+.databox img {
+	max-width: 100%
 }
 
 @media screen and (min-width: 768px) {
