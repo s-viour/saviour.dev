@@ -2,6 +2,7 @@
 tags = ["programming", "tutorial"]
 title = "fields hosting tutorial"
 index = "0002"
+slug = "0002"
 layout = "default"
 +++
 fields is a discord bot designed to play a single mp3 file on loop forever, and it can be hosted for completely free

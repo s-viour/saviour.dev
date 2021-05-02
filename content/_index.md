@@ -2,6 +2,7 @@
 tags = ["meta"]
 title = "the notebook"
 index = "0000"
+slug = "0000"
 layout = "default"
 +++
 

@@ -4,3 +4,6 @@ title = "sav's notebook"
 
 [taxonomies]
   tag = "tags"
+
+[permalinks]
+  "/" = "/:slug/"
