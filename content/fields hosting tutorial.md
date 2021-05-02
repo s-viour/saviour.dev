@@ -1,5 +1,5 @@
 +++
-tags = ["programming", "tutorial"]
+tags = ["tutorial"]
 title = "fields hosting tutorial"
 index = "0002"
 slug = "0002"
