@@ -1,0 +1,36 @@
++++
+tags = ["tool"]
+title = "bottomify"
+index = "0005"
+slug = "0005"
+layout = "default"
++++
+<p>
+web tool for the <a href="https://github.com/bottom-software-foundation">Bottom Encoding Standard</a>.
+implementation sourced from <a href="https://github.com/bottom-software-foundation/bottom-js">bottom-js</a>
+</p>
+
+<form>
+  <label for="encodeInput">encode: </label>
+  <input type="text" id="encodeInput" style="width: 100%;" />
+
+  <br>
+
+  <label for="decodeInput">decode: </label>
+  <input type="text" id="decodeInput" style="width: 100%;" />
+</form>
+
+<script>var exports = {};</script>
+<script src="https://unpkg.com/bottomify@0.3.0/dist/bottomify.js"></script>
+<script>
+  let enc = document.getElementById("encodeInput");
+  let dec = document.getElementById("decodeInput");
+  enc.onkeyup = (e) => {
+    if (enc.value == "") { dec.value = ""; return; }
+    dec.value = encode(enc.value);
+  }
+  dec.onkeyup = (e) => {
+    if (dec.value == "") { enc.value = ""; return; }
+    enc.value = decode(dec.value);
+  }
+</script>
