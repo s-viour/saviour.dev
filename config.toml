@@ -2,6 +2,8 @@ baseURL = "/"
 languageCode = "en-us"
 title = "sav's notebook"
 
+pygmentsUseClasses=true
+
 [taxonomies]
   tag = "tags"
 
