@@ -1,10 +1,16 @@
 <div id="directory" class="halfpage">
 	<h1 class="header"><a href="/">sav's notebook</a></h1>
-	<h2 class="subheader">site directory</h2>
+	<h2 class="subheader">tags available:</h2>
+
+	<!---
+	{{ range .Site.Taxonomies.tags }}
+    	<p><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>, </pre>
+	{{ end }}
+		-->
 
 	<ul>
-		{{ range .Site.Taxonomies.tags }}
-    		<li class="card"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
-		{{ end }}
+	{{ range .Site.Taxonomies.tags -}}
+    	<li><a href="{{ .Page.Permalink }}">{{ .Page.Title}}</a></li>
+	{{- end -}}
 	</ul>
 </div>

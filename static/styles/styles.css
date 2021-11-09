@@ -1,9 +1,9 @@
 .container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 810px) {
 	.container {
 		flex-direction: row;
 	}
@@ -14,7 +14,7 @@
 	width: 100%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 810px) {
 	.halfpage {
 		width: 50%;
 	}
@@ -27,7 +27,7 @@
 	flex-direction: column;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 810px) {
 	#directory {
 		max-width: 45%;
 	}
@@ -47,26 +47,29 @@
 }
 
 #directory ul {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	list-style-type: none;
-	padding: 0;
+	display: inline;
+	list-style: none;
+	padding: 0px;
 }
 
 #directory li {
-	display: flex;
+	display: inline;
 	font-family: antic-slab;
-	font-size: 36px;
+	font-size: 30px;
 	color: #383838;
 	text-align: center;
-	margin: 0.1em;
-	padding-left: 0.8em;
-	padding-right: 0.8em;
+}
+
+#directory li::after {
+	content: ", ";
+}
+
+#directory li:last-child::after {
+	content: "";
 }
 
 #directory a {
-	text-decoration: none;
+	text-decoration: underline;
 	color: #383838;
 }
 
@@ -74,22 +77,13 @@
 	justify-content: left;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 810px) {
 	#content {
 		width: 55%;
 	}
 }
 
-.card {
-	background-color: #fafafa;
-	border-color: #f4f4f4;
-	border-width: 2px;
-	border-style: solid;
-}
-
 .databox {
-	padding: 1em;
-
 	display: flex;
 	flex-direction: column;
 
@@ -120,9 +114,20 @@
 	max-width: 100%
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 810px) {
 	.databox {
 		overflow-y: scroll;
 		height: 90vh;
+	}
+}
+
+.highlight {
+	max-width: 100%;
+	overflow-x: scroll;
+}
+
+@media screen and (min-width: 810px) {
+	.highlight {
+		overflow-x: visible;
 	}
 }
