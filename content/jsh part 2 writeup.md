@@ -1,5 +1,5 @@
 +++
-tags = ["writeup"]
+tags = ["writeup", "tutorial"]
 title = "jsh part 2"
 index = "0008"
 slug = "0008"
