@@ -46,7 +46,7 @@ dll_traverse(tmp, nargv) {
 }
 ```
 
-**Step 5.** this is actually where we do the piping! you should have a `Dllist` of `char**` pointers called `nargv` or something similar. each of those commands are a single command in a pipeline. first, add code to check if there's only one thing in the `Dllist`. **if so, do exactly the same thing as you did in part 2**. otherwise, you need to loop over the `Dllist` and open pipes for each command in the list before executing it. consider the following cases for each command:
+**Step 6.** this is actually where we do the piping! you should have a `Dllist` of `char**` pointers called `nargv` or something similar. each of those commands are a single command in a pipeline. first, add code to check if there's only one thing in the `Dllist`. **if so, do exactly the same thing as you did in part 2**. otherwise, you need to loop over the `Dllist` and open pipes for each command in the list before executing it. consider the following cases for each command:
 ```c
 Dllist tmp;
 Dllist tmp2 = dll_first(cfgs);
@@ -80,11 +80,11 @@ dll_traverse(tmp, nargv) {
   tmp2 = dll_next(tmp2);
 
   // here, you also need to open redirects and close all pipes
-  // see step 6 for closing all pipes
+  // see step 7 for closing all pipes
   // and finally execute the command!
 }
 ```
 
-**Step 6.** this is a very important step!! we **have to close all pipes in the child processes as well as the parent process**. just iterate over the `cfgs` list and call close on both ends of the pipe. that is `close(ops->iopipe[0]); close(ops->iopipe[1]);`
+**Step 7.** this is a very important step!! we **have to close all pipes in the child processes as well as the parent process**. just iterate over the `cfgs` list and call close on both ends of the pipe. that is `close(ops->iopipe[0]); close(ops->iopipe[1]);`
 
-**Step 7.** add an integer to keep track of pid of the last process you spawned, and update it inside the `dll_traverse`. after that, move your wait code outside the `dll_traverse` and only wait on the last pid. if you've done all this correct (and i haven't forgotten anything in this writeup) you should have a working jsh part 3!
+**Step 8.** add an integer to keep track of pid of the last process you spawned, and update it inside the `dll_traverse`. after that, move your wait code outside the `dll_traverse` and only wait on the last pid. if you've done all this correct (and i haven't forgotten anything in this writeup) you should have a working jsh part 3!
