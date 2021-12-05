@@ -114,10 +114,18 @@
 	max-width: 100%
 }
 
+.databox th, td {
+	border: 1px solid black;
+}
+
 @media screen and (min-width: 810px) {
 	.databox {
 		overflow-y: scroll;
 		height: 90vh;
+	}
+
+	.databox table, th, td {
+		max-width: 50%;
 	}
 }
 
