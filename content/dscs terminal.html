@@ -20,17 +20,28 @@ faster interface for accessing the terminal at <a href="https://www.twitch.tv/ds
     const baseUrl = 'https://terminal.armory.cloud/request.php';
 
     const writeOutput = (data) => {
-        if (data === '') return;
         const output = document.getElementById('cmdOutput');
-        let messages = JSON.parse(data).payload.messages;
-        console.log(messages);
-        messages.forEach((i) => {
-            if (typeof i == 'string') {
-                output.value += i;
+        const writeMsgs = (obj) => {
+            if (obj.forEach === undefined) {
+                output.value += obj.v;
                 output.value += '\n';
+                return;
             }
-        })
-        output.value += '\n';
+
+            obj.forEach((o) => {
+                if (typeof o == 'string') {
+                    output.value += o;
+                    output.value += '\n';
+                } else if (typeof o == 'object') {
+                    writeMsgs(o);
+                }
+            })
+        };
+        
+        if (data === '') return;
+        let messages = JSON.parse(data).payload.messages.flat();
+        console.log(messages);
+        writeMsgs(messages.flat());
     };
 
     const makeRequest = (cmd) => {
@@ -51,6 +62,11 @@ faster interface for accessing the terminal at <a href="https://www.twitch.tv/ds
     input.onkeyup = (e) => {
         if (e.keyCode == 13) {
             let cmd = input.value;
+            if (cmd == 'clear') {
+                output.value = '';
+                input.value = '';
+                return;
+            }
             makeRequest(cmd);
             output.value += `> ${cmd}\n`
             input.value = '';
