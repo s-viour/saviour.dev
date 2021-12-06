@@ -1,0 +1,60 @@
++++
+tags = ["tool"]
+title = "DSCS terminal"
+index = "0012"
+slug = "0012"
+layout = "default"
++++
+
+<p>
+faster interface for accessing the terminal at <a href="https://www.twitch.tv/dscs_iii_a3">https://www.twitch.tv/dscs_iii_a3</a>
+</p>
+
+<label for="cmdInput">command: </label>
+<input type="text" id="cmdInput" style="width: 100%" />
+
+<label for="cmdOutput">output: </label>
+<textarea id="cmdOutput" readonly=true style="height: 100%"></textarea>
+
+<script>
+    const baseUrl = 'https://terminal.armory.cloud/request.php';
+
+    const writeOutput = (data) => {
+        if (data === '') return;
+        const output = document.getElementById('cmdOutput');
+        let messages = JSON.parse(data).payload.messages;
+        console.log(messages);
+        messages.forEach((i) => {
+            if (typeof i == 'string') {
+                output.value += i;
+                output.value += '\n';
+            }
+        })
+        output.value += '\n';
+    };
+
+    const makeRequest = (cmd) => {
+        const http = new XMLHttpRequest();
+        let url = baseUrl;
+        url += '?command=' + cmd;
+        http.open('GET', url);
+        http.send();
+        http.onreadystatechange = (e) => {
+            if (http.readyState === XMLHttpRequest.DONE) {
+                writeOutput(http.responseText);
+            }
+        }
+    };
+
+    let input = document.getElementById('cmdInput');
+    const output = document.getElementById('cmdOutput');
+    input.onkeyup = (e) => {
+        if (e.keyCode == 13) {
+            let cmd = input.value;
+            makeRequest(cmd);
+            output.value += `> ${cmd}\n`
+            input.value = '';
+        }
+    }
+    
+</script>
