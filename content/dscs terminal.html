@@ -10,6 +10,10 @@ layout = "default"
 faster interface for accessing the terminal at <a href="https://www.twitch.tv/dscs_iii_a3">https://www.twitch.tv/dscs_iii_a3</a>
 </p>
 
+
+<label for="requestsRecvd">current total requests</label>
+<input type="text" id = "requestsRecvd" readonly="true" style="width: 100%" />
+
 <label for="cmdInput">command: </label>
 <input type="text" id="cmdInput" style="width: 100%" />
 
@@ -72,5 +76,29 @@ faster interface for accessing the terminal at <a href="https://www.twitch.tv/ds
             input.value = '';
         }
     }
-    
+
+    window.onload = () => {
+        const output =  document.getElementById('requestsRecvd');
+        const http = new XMLHttpRequest();
+        let url = baseUrl;
+        url += '?command=' + 'execute 31575 -open -key';
+        http.open('GET', url);
+        http.send();
+        http.onreadystatechange = (e) => {
+            if (http.readyState === XMLHttpRequest.DONE) {
+                let messages = JSON.parse(http.responseText).payload.messages.flat();
+                const reqs = messages
+                    .filter((s) => {
+                        if (typeof s == 'string') {
+                            return s.startsWith('Requests received so far');
+                        } else {
+                            return false;
+                        }
+                    }
+                );
+                output.value += reqs;   
+
+            }
+        }
+    }
 </script>
